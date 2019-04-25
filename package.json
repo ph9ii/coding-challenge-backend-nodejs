@@ -1,0 +1,60 @@
+{
+  "name": "coding-challenge-backend-nodejs",
+  "version": "1.0.0",
+  "description": "![JOIN Stolen Bike Cases](https://github.com/join-com/coding-challenge-backend-nodejs/raw/master/illustration.png)",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "@hapi/joi": "^15.0.0",
+    "bcrypt": "^3.0.5",
+    "body-parser": "^1.18.3",
+    "bookshelf": "^0.14.2",
+    "config": "^3.0.1",
+    "debug": "^4.1.1",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-async-errors": "^3.1.1",
+    "express-ip": "^1.0.3",
+    "express-limiter": "^1.6.1",
+    "express-throttle": "^2.0.0",
+    "faker": "^4.1.0",
+    "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.16.3",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.5.0",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "mysql": "^2.16.0",
+    "nodemailer": "^6.0.0",
+    "pug": "^2.0.3",
+    "rate-limiter-flexible": "^0.23.5",
+    "redis": "^2.8.0",
+    "winston": "^2.4.0",
+    "winston-mongodb": "^3.0.0"
+  },
+  "devDependencies": {
+    "jest": "^24.7.0",
+    "snyk": "^1.145.0",
+    "supertest": "^4.0.2"
+  },
+  "scripts": {
+    "run": "node server",
+    "dev": "nodemon server",
+    "test": "jest --watchAll --verbose --coverage",
+    "snyk-test": "snyk test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ph9ii/coding-challenge-backend-nodejs.git"
+  },
+  "keywords": [],
+  "author": "Mohumu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ph9ii/coding-challenge-backend-nodejs/issues"
+  },
+  "homepage": "https://github.com/ph9ii/coding-challenge-backend-nodejs#readme"
+}

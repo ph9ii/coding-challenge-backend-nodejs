@@ -1,0 +1,63 @@
+#  Run `docker-compose build` to build the images
+#  Run `docker-compose up` to run the containers
+#  Run `docker-compose down` to remove the containers
+version: '3.5'
+services:
+  mysql:
+    container_name: service_mysql
+    image: mysql:5.7
+    volumes:
+      - ~/datadir/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+      - 33060:33060
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - service_network
+  redis:
+    container_name: service_redis
+    image: redis:4.0
+    volumes:
+      - ~/datadir/redis:/var/lib/redis
+    ports:
+      - 6379:6379
+    networks:
+      - service_network
+  api:
+    container_name: service_api
+    build: ./apiapp/
+    image: service_api
+    volumes:
+      - ./apiapp/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+      - 9229:9229
+    depends_on:
+      - mysql
+      - redis
+      - notification
+    networks:
+      - service_network
+  app2:
+    build: ./notification/
+    image: service_notification
+    container_name: service_notify
+    environment:
+      - NODE_ENV=local
+    volumes:
+      - ./notification/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 4000:4000 # Notification api port
+      - 9223:9223 # Node debugg port
+      - 8099:8099 # GRPC port
+    depends_on:
+      - mysql
+    networks:
+      - service_network
+networks:
+  service_network:
+    driver: bridge
+    name: service_network
