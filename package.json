@@ -6,6 +6,13 @@
   "directories": {
     "test": "tests"
   },
+  "scripts": {
+    "run": "node server",
+    "dev": "nodemon server",
+    "test": "jest --watchAll --verbose --coverage",
+    "snyk-test": "snyk test",
+    "tsc": "tsc"
+  },
   "dependencies": {
     "@hapi/joi": "^15.0.0",
     "bcrypt": "^3.0.5",
@@ -24,7 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.16.3",
     "lodash": "^4.17.11",
-    "mongoose": "^5.5.0",
+    "mongoose": "^5.5.4",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
     "mysql": "^2.16.0",
@@ -32,19 +39,23 @@
     "pug": "^2.0.3",
     "rate-limiter-flexible": "^0.23.5",
     "redis": "^2.8.0",
+    "typescript": "^3.4.5",
     "winston": "^2.4.0",
     "winston-mongodb": "^3.0.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/debug": "^4.1.4",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.16.1",
+    "@types/helmet": "0.0.43",
+    "@types/knex": "^0.14.7",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^11.13.7",
+    "@types/nodemailer": "^4.6.8",
     "jest": "^24.7.0",
     "snyk": "^1.145.0",
     "supertest": "^4.0.2"
-  },
-  "scripts": {
-    "run": "node server",
-    "dev": "nodemon server",
-    "test": "jest --watchAll --verbose --coverage",
-    "snyk-test": "snyk test"
   },
   "repository": {
     "type": "git",
