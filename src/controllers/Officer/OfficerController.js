@@ -109,6 +109,13 @@ exports.deleteUser = async (req, res, next) => {
 
 	if (!officer) return res.status(404).send("No officer found with the given id");
 
+	if (!req.body.password) 
+		return res.status(400).send("You must specify a valid old password to delete");
+
+	// Check password
+	const validPass = await bcrypt.compare(req.body.password, officer.get('password'));
+	if (!validPass) return res.status(400).send("Please, check your password");
+
 	officer.destroy();
 
 	const hyperOfficer = hyperMediaOne(req, officer);
