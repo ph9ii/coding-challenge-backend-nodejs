@@ -71,7 +71,7 @@ exports.updateOfficer = async (req, res, next) => {
 		return res.status(404).send("No officer found with the given id");
 
 	if (!req.body.password) 
-		return res.status(400).send("You must specify a valid old password to update");
+		return res.status(400).send("You must specify a valid password to update");
 
 	// Check password
 	const validPass = await bcrypt.compare(req.body.password, officer.get('password'));
@@ -103,14 +103,14 @@ exports.updateOfficer = async (req, res, next) => {
 }
 
 
-exports.deleteUser = async (req, res, next) => {
+exports.deleteOfficer = async (req, res, next) => {
 
 	const officer = await Officer.forge({id: req.params.id}).fetch();
 
 	if (!officer) return res.status(404).send("No officer found with the given id");
 
 	if (!req.body.password) 
-		return res.status(400).send("You must specify a valid old password to delete");
+		return res.status(400).send("You must specify a valid password to delete");
 
 	// Check password
 	const validPass = await bcrypt.compare(req.body.password, officer.get('password'));
