@@ -7,9 +7,9 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      database: process.env.DB_NAME,
-      user:     process.env.DB_USER,
-      password: process.env.DB_PASSWORD
+      database: process.env.MYSQL_DB_NAME,
+      user:     process.env.MYSQL_DB_USER,
+      password: process.env.MYSQL_DB_PASSWORD
     },
     pool: {
       min: 2,
@@ -47,9 +47,9 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: process.env.MYSQL_DB_NAME,
+      user:     process.env.MYSQL_DB_USER,
+      password: process.env.MYSQL_DB_PASSWORD
     },
     pool: {
       min: 2,
