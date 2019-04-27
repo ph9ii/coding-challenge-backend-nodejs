@@ -1,3 +1,5 @@
+// @ts-check
+
 require('dotenv').config();
 const express = require("express");
 const app = express();
@@ -12,8 +14,4 @@ require('./init/middleware')(app);
 require('./init/routes')(app);
 
 module.exports = app;
-
-
-
-
 

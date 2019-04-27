@@ -1,3 +1,5 @@
+// @ts-check
+
 const http = require("http");
 const app = require("./app");
 const winston = require('winston');

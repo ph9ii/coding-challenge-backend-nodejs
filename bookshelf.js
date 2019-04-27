@@ -1,3 +1,5 @@
+// @ts-check
+
 const knex = require('knex');
 const bookshelf = require('bookshelf');
 const knexConfig = require('./knexfile');

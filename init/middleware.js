@@ -1,3 +1,5 @@
+// @ts-check
+
 // const rateLimiterRedisMiddleware = require('./src/middleware/rateLimiterRedis');
 const express = require("express");
 const helmet = require("helmet");
