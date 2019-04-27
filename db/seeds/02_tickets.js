@@ -1,11 +1,17 @@
 const faker = require('faker');
+const moment = require('moment');
 
 let createRecord = (knex, id) => {
   return knex('ticket').insert({
     id,
     officer_id: faker.random.number({'min': 1, 'max': 9}),
-    name: faker.name.findName(),
+    full_name: faker.name.findName(),
+    license_number: faker.random.number({'min': 1001, 'max': 5001}),
     email: faker.internet.email(),
+    color: faker.commerce.color(),
+    type: faker.commerce.product(),
+    description: faker.lorem.sentences(),
+    datetime: moment(faker.date.recent()).format('YYYY-MM-DD HH-mm-ss'),
     status: 'closed',
     created_at: new Date(),
     updated_at: new Date()
