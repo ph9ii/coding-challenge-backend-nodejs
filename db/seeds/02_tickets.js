@@ -9,7 +9,7 @@ let createRecord = (knex, id) => {
     license_number: faker.random.number({'min': 1001, 'max': 5001}),
     email: faker.internet.email(),
     color: faker.commerce.color(),
-    type: faker.commerce.product(),
+    type: faker.company.catchPhrase(),
     description: faker.lorem.sentences(),
     datetime: moment(faker.date.recent()).format('YYYY-MM-DD HH-mm-ss'),
     status: 'closed',
