@@ -1,6 +1,7 @@
 // ts-ckeck
 
 async function showAll(req, res, hyperCollection, collection, code = 200) {
+	
 	const pageSize = +parseInt(req.query.pagesize) || 10;
 	const currentPage = +parseInt(req.query.page) || 1;
 	

@@ -13,5 +13,8 @@ require('./init/middleware')(app);
 // Load Routes
 require('./init/routes')(app);
 
+// Load DB
+require('./init/mongodb')();
+
 module.exports = app;
 
