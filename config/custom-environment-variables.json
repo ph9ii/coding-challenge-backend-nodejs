@@ -1,4 +1,8 @@
 {
 	"mail": {"password": "app_password"},
-	"jwtPrivateKey": "vi_jwtPrivateKey"
+	"jwtPrivateKey": "vi_jwtPrivateKey",
+	"MYSQL_DB_HOST": "MYSQL_DB_HOST",
+	"MYSQL_DB_USER": "MYSQL_DB_USER",
+	"MYSQL_DB_PASSWORD": "MYSQL_DB_PASSWORD",
+	"MYSQL_DB_NAME": "MYSQL_DB_NAME"
 }
