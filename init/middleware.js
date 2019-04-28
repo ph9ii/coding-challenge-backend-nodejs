@@ -1,6 +1,7 @@
 // @ts-check
 
 // const rateLimiterRedisMiddleware = require('./src/middleware/rateLimiterRedis');
+require('express-async-errors');
 const express = require("express");
 const helmet = require("helmet");
 const path = require("path");

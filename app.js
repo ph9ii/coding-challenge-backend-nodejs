@@ -14,7 +14,7 @@ require('./init/middleware')(app);
 require('./init/routes')(app);
 
 // Load DB
-require('./init/mongodb')();
+// require('./init/mongodb')();
 
 module.exports = app;
 

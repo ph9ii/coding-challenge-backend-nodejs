@@ -5,8 +5,6 @@ if (process.env.NODE_ENV !== 'test') {
 	require('winston-mongodb');
 }
 
-require('express-async-errors');
-
 const startupDebugger = require("debug")("app:startup");
 const dbDebugger = require("debug")("app:db");
 
