@@ -9,12 +9,14 @@
   "scripts": {
     "run": "node server",
     "dev": "nodemon server",
-    "test": "jest --watchAll --verbose --coverage",
+    "test": "jest --watchAll",
+    "ftest": "jest --watchAll --verbose --coverage",
     "snyk-test": "snyk test",
     "tsc": "tsc"
   },
   "dependencies": {
     "@hapi/joi": "^15.0.0",
+    "@types/config": "0.0.34",
     "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "bookshelf": "^0.14.2",
@@ -40,6 +42,7 @@
     "pug": "^2.0.3",
     "rate-limiter-flexible": "^0.23.5",
     "redis": "^2.8.0",
+    "sqlite3": "^4.0.6",
     "typescript": "^3.4.5",
     "winston": "^2.4.0",
     "winston-mongodb": "^3.0.0"
