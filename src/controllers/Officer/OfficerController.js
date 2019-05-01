@@ -29,6 +29,7 @@ exports.getOfficers = async (req, res, next) => {
 
 exports.getOfficer = async (req, res, next) => {
 	const officer = await Officer.forge({id: req.params.id}).fetch();
+	
 	if (!officer) return res.status(404).send("No officer found with the given id");
 
 	const hyperOfficer = hyperMediaOne(req, officer);
