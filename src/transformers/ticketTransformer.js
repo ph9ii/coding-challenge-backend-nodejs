@@ -18,7 +18,7 @@ function getHyperLinks(req, hyperTicket) {
     },
     {
       'rel': `ticket.officer`,
-      'href': `${baseUrl}/api/tickets/${hyperTicket.id}/officer`
+      'href': `${baseUrl}/api/tickets/${hyperTicket.id}/officers`
     },
   ];
 

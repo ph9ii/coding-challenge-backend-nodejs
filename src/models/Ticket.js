@@ -2,7 +2,7 @@
 
 const Joi = require("@hapi/joi");
 
-const { Officer } = require('./Officer');
+require('./Officer');
 
 const { TicketThread } = require('./TicketThread');
 
@@ -14,7 +14,7 @@ const Ticket = bookshelf.Model.extend({
   tableName: 'ticket',
 
   officer: function() {
-    return this.belongsTo(Officer, 'Officer');
+    return this.belongsTo('Officer', 'officer_id');
   },
 
   threads: function() {
