@@ -16,6 +16,10 @@ function getHyperLinks(req, hyperTicket) {
       'rel': `self`,
       'href': `${baseUrl}/api/tickets/${hyperTicket.id}`
     },
+    {
+      'rel': `ticket.officer`,
+      'href': `${baseUrl}/api/tickets/${hyperTicket.id}/officer`
+    },
   ];
 
   return links;

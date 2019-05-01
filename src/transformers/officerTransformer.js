@@ -17,7 +17,7 @@ function getHyperLinks(req, hyperOfficer) {
       'href': `${baseUrl}/api/officers/${hyperOfficer.id}`
     },
     {
-      'rel': `self`,
+      'rel': `officer.tickets`,
       'href': `${baseUrl}/api/officers/${hyperOfficer.id}/tickets`
     },
   ];
