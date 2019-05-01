@@ -2,7 +2,7 @@
 
 const Joi = require("@hapi/joi");
 
-const { Ticket } = require('./Ticket');
+require('./Ticket');
 
 const bookshelf = require('../../bookshelf');
 bookshelf.plugin('pagination');
@@ -14,7 +14,7 @@ const Officer = bookshelf.Model.extend({
   hidden: ['password_hash', 'password_salt', 'password'],
 
   tickets: function() {
-    return this.hasMany(Ticket, 'Ticket');
+    return this.hasMany('Ticket');
   },
   
 });

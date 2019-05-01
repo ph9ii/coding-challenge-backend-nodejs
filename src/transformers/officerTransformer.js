@@ -16,6 +16,10 @@ function getHyperLinks(req, hyperOfficer) {
       'rel': `self`,
       'href': `${baseUrl}/api/officers/${hyperOfficer.id}`
     },
+    {
+      'rel': `self`,
+      'href': `${baseUrl}/api/officers/${hyperOfficer.id}/tickets`
+    },
   ];
 
   return links;
