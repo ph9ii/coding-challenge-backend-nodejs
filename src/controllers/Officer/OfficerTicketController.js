@@ -14,6 +14,18 @@ const {
 
 const { hyperMediaOne, hyperMediaAll } = require('../../transformers/ticketTransformer');
 
+exports.getOfficerTickets = async (req, res, next) => {
+	const officer = await Officer.forge({id: req.params.id});
+
+	if (!officer) return res.status(404).send("No officer found with the given id");
+
+	const tickets = await officer.tickets().fetch();
+
+	const hypertickets = hyperMediaAll(req, tickets.toJSON());
+
+	showAll(req, res, hypertickets, tickets);
+}
+
 exports.updateTicket = async (req, res, next) => {
 	const { error } = update(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
