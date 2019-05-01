@@ -45,7 +45,7 @@ module.exports = async (officer) => {
 
 				const queueDel = await queue.remove();
 
-				winston.log("AVENGERS: Est. queue number left: ", remainQueue - 1);
+				winston.info("AVENGERS: Est. queue number left: ", remainQueue - 1);
 
 				await officer.save({ avail: false }, { patch: true });
 
