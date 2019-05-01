@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "run": "node server",
+    "prod": "node server",
     "dev": "nodemon server",
     "test": "jest --watchAll",
     "ftest": "jest --watchAll --verbose --coverage",
