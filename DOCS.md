@@ -27,3 +27,29 @@ You can also:
 SBRS is developed using javascript in NodeJS with express framework.
 
 [![Join the chat at https://gitter.im/coding-challenge-backend-nodejs/community](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/coding-challenge-backend-nodejs/community)
+
+### Installation
+
+SBRS requires [Node.js](https://nodejs.org/) v4+ to run.
+
+Docker for development.
+
+```sh
+$ cd SBRS
+$ docker-compose build
+$ docker-compose up
+```
+
+Install the dependencies and devDependencies and start the server.
+
+```sh
+$ npm install -d
+$ npm run dev
+```
+
+For production environments...
+
+```sh
+$ npm install --production
+$ NODE_ENV=production npm run
+```
