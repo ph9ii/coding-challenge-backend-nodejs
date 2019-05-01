@@ -14,7 +14,6 @@ const {
 	hyperMediaOne } = require('../../transformers/officerTransformer');
 
 exports.getOfficers = async (req, res, next) => {
-
 	const officers = await Officer.forge()
 		.fetchPage({
 			pageSize: req.query.pagesize, // Defaults to 10 if not specified
@@ -29,7 +28,6 @@ exports.getOfficers = async (req, res, next) => {
 }
 
 exports.getOfficer = async (req, res, next) => {
-
 	const officer = await Officer.forge({id: req.params.id}).fetch();
 	if (!officer) return res.status(404).send("No officer found with the given id");
 
@@ -39,7 +37,6 @@ exports.getOfficer = async (req, res, next) => {
 }
 
 exports.createOfficer = async (req, res, next) => {
-
 	const { error } = validate(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 
@@ -61,7 +58,6 @@ exports.createOfficer = async (req, res, next) => {
 }
 
 exports.updateOfficer = async (req, res, next) => {
-
 	const { error } = update(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 
@@ -104,7 +100,6 @@ exports.updateOfficer = async (req, res, next) => {
 
 
 exports.deleteOfficer = async (req, res, next) => {
-
 	const officer = await Officer.forge({id: req.params.id}).fetch();
 
 	if (!officer) return res.status(404).send("No officer found with the given id");
