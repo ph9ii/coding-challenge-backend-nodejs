@@ -80,9 +80,9 @@ exports.createTicket = async (req, res, next) => {
 
 	const officer = await Officer.forge({ avail: true }).fetch();
 
-	let datetime = new Date(req.body.datetime);
+	const datetime = new Date(req.body.datetime);
 
-	datetime = moment(datetime).format('YYYY-MM-DD HH-mm-ss');
+	const datetimeSQL = moment(datetime).format('YYYY-MM-DD HH-mm-ss');
 
 	if (!officer) {
 		const ticket = new Queue({ 
@@ -117,7 +117,7 @@ exports.createTicket = async (req, res, next) => {
 					day_phone: req.body.day_phone,
 					eve_phone: req.body.eve_phone,
 					mob_phone: req.body.mob_phone,
-					datetime: datetime,
+					datetime: datetimeSQL,
 				}).save();
 
 				await officer.save({ avail: false }, { patch: true });

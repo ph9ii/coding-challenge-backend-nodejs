@@ -41,11 +41,11 @@ module.exports = async (officer) => {
 					datetime: datetime,
 				}).save();
 
-				const remainQueue = queue.estimatedDocumentCount();
+				const leftQueue = await Queue.estimatedDocumentCount({});
 
 				const queueDel = await queue.remove();
 
-				winston.info("AVENGERS: Est. queue number left: ", remainQueue - 1);
+				winston.info("AVENGERS: Est. Queue: ", leftQueue);
 
 				await officer.save({ avail: false }, { patch: true });
 
