@@ -3,7 +3,7 @@
 async function showAll(req, res, hyperCollection, collection, code = 200) {
 	
 	const pageSize = +parseInt(req.query.pagesize) || 10;
-	const currentPage = +parseInt(req.query.page) || 1;
+	const currentPage = (hyperCollection.length === 0) ? 0 : +parseInt(req.query.page) || 1;
 	
 	var regex2 = /(.?page=.*)|(.?pagesize=.*)/gm;
 
@@ -19,7 +19,7 @@ async function showAll(req, res, hyperCollection, collection, code = 200) {
 
  	let prevPage = currentPage - 1;
 
- 	const totalPages = Math.ceil(totalCount/pageSize);
+ 	const totalPages = (hyperCollection.length === 0) ? 0 : Math.ceil(totalCount/pageSize - 1);
 
  	const prevLink = currentPage <= 1 ? '' : `${customUrl}?pagesize=${pageSize}&page=${prevPage}`;
 
