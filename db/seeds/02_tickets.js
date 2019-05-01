@@ -12,7 +12,7 @@ let createRecord = (knex, id) => {
     type: faker.company.catchPhrase(),
     description: faker.lorem.sentences(),
     datetime: moment(faker.date.recent()).format('YYYY-MM-DD HH-mm-ss'),
-    status: 'closed',
+    status: 'resolved',
     created_at: new Date(),
     updated_at: new Date()
   });
