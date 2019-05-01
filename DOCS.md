@@ -51,5 +51,5 @@ For production environments...
 
 ```sh
 $ npm install --production
-$ NODE_ENV=production npm run
+$ NODE_ENV=production npm run prod
 ```
