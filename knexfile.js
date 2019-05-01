@@ -27,9 +27,11 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
+      host: config.get('MYSQL_DB_HOST'),
       database: config.get('MYSQL_DB_NAME'),
       user:     config.get('MYSQL_DB_USER'),
-      password: config.get('MYSQL_DB_PASSWORD')
+      password: config.get('MYSQL_DB_PASSWORD'),
+      port: config.get('MYSQL_DB_PORT'),
     },
     pool: {
       min: 2,
@@ -47,9 +49,11 @@ module.exports = {
   staging: {
     client: 'mysql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host: config.get('MYSQL_DB_HOST'),
+      database: config.get('MYSQL_DB_NAME'),
+      user:     config.get('MYSQL_DB_USER'),
+      password: config.get('MYSQL_DB_PASSWORD'),
+      port: config.get('MYSQL_DB_PORT'),
     },
     pool: {
       min: 2,
@@ -67,9 +71,11 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      database: process.env.MYSQL_DB_NAME,
-      user:     process.env.MYSQL_DB_USER,
-      password: process.env.MYSQL_DB_PASSWORD
+      host: config.get('MYSQL_DB_HOST'),
+      database: config.get('MYSQL_DB_NAME'),
+      user:     config.get('MYSQL_DB_USER'),
+      password: config.get('MYSQL_DB_PASSWORD'),
+      port: config.get('MYSQL_DB_PORT'),
     },
     pool: {
       min: 2,
