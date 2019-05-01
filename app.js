@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 
 // Logging
-require('./init/logging')(app);
+// require('./init/logging')(app);
 
 // Load Middleware
 require('./init/middleware')(app);
