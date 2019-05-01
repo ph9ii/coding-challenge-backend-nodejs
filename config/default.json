@@ -2,6 +2,7 @@
 	"name": "My Express App",
 	"jwtPrivateKey": "",
 	"mongodb": "",
+	"mongodb_log": "",
 	"MYSQL_DB_HOST": "",
 	"MYSQL_DB_PORT": "",
 	"MYSQL_DB_USER": "",

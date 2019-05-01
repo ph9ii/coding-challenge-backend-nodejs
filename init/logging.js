@@ -1,5 +1,8 @@
 // @ts-check
 
+require('dotenv').config();
+const config = require('config');
+
 const winston = require('winston');
 if (process.env.NODE_ENV !== 'test') {
 	require('winston-mongodb');
@@ -34,7 +37,7 @@ module.exports = function(app) {
 
 	if (process.env.NODE_ENV !== 'test') {
 		winston.add(winston.transports.MongoDB, { 
-			db: `${process.env.LOG_DB_HOST}/${process.env.LOG_DB_NAME}`,
+			db: config.get('mongodb_log'),
 			level: 'info' 
 		});
 	}

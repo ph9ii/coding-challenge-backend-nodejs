@@ -1,6 +1,7 @@
 {
 	"jwtPrivateKey": "vi_jwtPrivateKey",
 	"mongodb": "MONGODB",
+	"mongodb_log": "MONGODB_LOG",
 	"MYSQL_DB_HOST": "MYSQL_DB_HOST",
 	"MYSQL_DB_PORT": "MYSQL_DB_PORT",
 	"MYSQL_DB_USER": "MYSQL_DB_USER",
