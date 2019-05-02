@@ -32,7 +32,7 @@ SBRS is developed using javascript in NodeJS with express framework.
 
 SBRS requires [Node.js](https://nodejs.org/) v4+ to run.
 
-Please set the environment variables Requirements.
+Please set the environment variables.
 
 Docker for development.
 
@@ -45,14 +45,14 @@ $ docker-compose up
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-$ npm install -d
+$ npm i -d
 $ npm run dev
 ```
 
 For production environments...
 
 ```sh
-$ npm install --production
+$ npm i --production
 $ NODE_ENV=production node server
 ```
 
