@@ -32,6 +32,8 @@ SBRS is developed using javascript in NodeJS with express framework.
 
 SBRS requires [Node.js](https://nodejs.org/) v4+ to run.
 
+Please set the environment variables Requirements.
+
 Docker for development.
 
 ```sh
@@ -53,3 +55,55 @@ For production environments...
 $ npm install --production
 $ NODE_ENV=production node server
 ```
+
+Run migrations & seeds...
+
+```sh
+$ knex migrate:latest
+$ knex seed:run
+```
+
+Run unit & integration tests...
+
+```sh
+$ npm run test
+$ npm run ftest
+```
+
+### API / ENDPOINTS
+
+All end points are prefixed with /api.
+
+```sh
+GET /
+/api/tickets
+/api/tickets/:id
+/api/tickets/search
+/api/tickets/:id/officers
+/api/officers
+/api/officers/:id
+/api/officers/:id/tickets
+```
+
+```sh
+POST /
+/api/tickets
+/api/officers
+```
+
+```sh
+PUT /
+/api/officers/:id
+/api/officers/:id/tickets/:id
+```
+
+#### Online Demo
+
+Visit https://sbrs-app.herokuapp.com/
+
+License
+----
+
+MIT
+
+# Thank _You_!
