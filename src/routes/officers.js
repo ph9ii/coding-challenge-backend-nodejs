@@ -18,7 +18,7 @@ router.post('/', OfficerController.createOfficer);
 router.put('/:id', OfficerController.updateOfficer);
 
 // Office Ticket Controller
-router.post('/:officer_id/tickets/:ticket_id', OfficerTicketController.updateTicket);
+router.put('/:officer_id/tickets/:ticket_id', OfficerTicketController.updateTicket);
 
 router.get('/:id/tickets', OfficerTicketController.getOfficerTickets);
 
