@@ -1,5 +1,5 @@
-exports.up = async function(knex, Promise) {
-  await knex.schema.createTable('audit', function(table) {
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable('audit', function(table) {
     table.increments();
     table.integer("ticket_id")
       .notNullable()
@@ -15,6 +15,6 @@ exports.up = async function(knex, Promise) {
   });
 };
 
-exports.down = async function(knex, Promise) {
-  await knex.schema.dropTable('audit');
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTable('audit');
 };

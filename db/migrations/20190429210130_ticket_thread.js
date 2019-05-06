@@ -1,5 +1,5 @@
-exports.up = async function(knex, Promise) {
-  await knex.schema.createTable('ticket_thread', function(table) {
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable('ticket_thread', function(table) {
     table.increments();
     table.string('comment', 1000).notNullable();
     table.integer("ticket_id")
@@ -14,6 +14,6 @@ exports.up = async function(knex, Promise) {
   });
 };
 
-exports.down = async function(knex, Promise) {
-  await knex.schema.dropTable('ticket_thread');
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTable('ticket_thread');
 };
