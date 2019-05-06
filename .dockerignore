@@ -7,3 +7,7 @@ coverage/
 
 package-lock.json
 /log/app.log
+
+# sqlite
+mydb.sqlite
+mydb.sqlite-journal
