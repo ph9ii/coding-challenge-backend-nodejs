@@ -15,7 +15,7 @@ const express = require("express");
 const morgan = require("morgan");
 
 module.exports = function(app) {
-	if (app.get('env') === 'development') {
+	if (app.get('env') === 'development' || app.get('env') === 'test') {
 		app.use(morgan('tiny'));
 		startupDebugger('Morgan is running...');
 	}
