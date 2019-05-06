@@ -1,4 +1,6 @@
+
 let server;
+
 const request = require('supertest');
 const winston = require('winston');
 
@@ -7,89 +9,73 @@ const knex = require('knex')(knexConfig.test);
 
 const { Officer } = require('../../../src/models/Officer');
 
-describe('/api/officers', () => {
-	beforeEach(async () => { 
+describe('/api/officers', () => { 
+	let officer;
+
+	beforeEach(async (done) => { 
 		server = require('../../../server');
 
-		return knex.migrate.latest()
-		   .then(() => {
-		   	 winston.info('Latest success');
-			})
-		   .catch((err) => {
-				winston.error(err.message);
-			});
-	});
-	afterEach(async () => {
-		return knex('officer').del()
-			.then(() => {
-			  winston.info('officer table deleted');
-			})
-			.catch((err) => {
-				winston.error(err.message);
-			});
 		return knex.migrate.rollback()
 			.then(() => {
-			  winston.info('Rollback success');
+				return knex.migrate.latest()
+				.then(async () => {
+					officer = await Officer.forge({
+						name: 'officer1',
+						email: 'officer1@domain.com',
+						password: 'secret'
+					}).save();
+				    done();
+				})
+				.catch ((ex) => {
+					console.error('Latest failed! ', ex.message);
+				});
 			})
-			.catch((err) => {
-				winston.error(err.message);
+			.catch ((ex) => {
+				console.error('Rollback failed! ', ex.message);
 			});
-			
+	});
+	afterEach(async (done) => {
 		await server.close();
+		
+		return knex.migrate.rollback()
+			.then(() => {
+				done();
+			})
+			.catch ((ex) => {
+				console.error('Rollback failed! ', ex.message);
+			});
 	});
 
-	describe('GET', () => {
-		let officer;
-		let data;
-
-		beforeEach(async () => { 
-			data = {
-				name: 'officer1',
-				email: 'officer1@domain.com',
+	describe('GET /', () => {
+		it('should return all officers', async () => {
+            const anotherOfficer = await Officer.forge({ 
+				name: 'anotherOfficer',
+				email: 'another@dom.com',
 				password: 'secret'
-			};
+			}).save();
 
-			officer = await Officer.forge(data).save();
+			const res = await request(server).get('/api/officers');
+			expect(res.status).toBe(200);
+			
+			expect(res.body.data.some(g => g.name === 'officer1')).toBeTruthy();
+			expect(res.body.data.some(g => g.name === 'anotherOfficer')).toBeTruthy();
+		});
+	});
+
+	describe('GET /:id', () => {
+		it('should return an officer if given id is valid', async () => {
+			const res = await request(server).get('/api/officers/' + officer.get('id'));
+
+			expect(res.status).toBe(200);
+			expect(res.body.data).toHaveProperty('name', officer.get('name'));
 		});
 
-		afterEach(async () => {
-			await Officer.where('id', '!=', '0')
-				.destroy();
+		it('should return 404 if no officer with the given id', async () => {
+			const id = '123';
 
-			await server.close();
-		});
+			const res = await request(server).get('/api/officers/' + id);
 
-		describe('GET /', () => {
-			it('should return all officers', async () => {
-				anotherOfficer = await Officer.forge({ 
-					name: 'anotherOfficer',
-					email: 'another@dom.com',
-					password: 'secret'
-				}).save();
-
-				const res = await request(server).get('/api/officers');
-
-				expect(res.status).toBe(200);
-				expect(res.body.data.some(g => g.name === 'officer1')).toBeTruthy();
-				expect(res.body.data.some(g => g.name === 'anotherOfficer')).toBeTruthy();
-			});
-		});
-
-		describe('GET /:id', () => {
-			it('should return an officer if given id is valid', async () => {
-				const res = await request(server).get('/api/officers/' + officer.get('id'));
-
-				expect(res.status).toBe(200);
-				expect(res.body.data).toHaveProperty('name', officer.get('name'));
-			});
-
-			it('should return 404 if no officer with the given id', async () => {
-				const id = '123';
-
-				const res = await request(server).get('/api/officers/' + id);
-
-				expect(res.status).toBe(404);
-			});
+			expect(res.status).toBe(404);
 		});
 	});
 
