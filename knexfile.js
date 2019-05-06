@@ -7,8 +7,8 @@ module.exports = {
   test: {
     client: 'sqlite3',
     connection: { 
-      // filename: "./mydb.sqlite" 
-      filename: ':memory:'
+      filename: "./mydb.sqlite",
+      // filename: ':memory:',
     },
     useNullAsDefault: true,
     pool: {
