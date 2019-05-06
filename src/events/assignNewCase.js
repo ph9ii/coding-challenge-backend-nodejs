@@ -19,7 +19,7 @@ module.exports = async (officer) => {
 
     let datetime = new Date(queue.datetime);
 
-	datetime = moment(datetime).format('YYYY-MM-DD HH-mm-ss');
+	const validDatetime = moment(datetime).format('YYYY-MM-DD HH-mm-ss');
 
     return new Promise(async (resolve, reject) => {
 	    bookshelf.transaction(async (t) => {
@@ -38,7 +38,7 @@ module.exports = async (officer) => {
 					day_phone: queue.day_phone,
 					eve_phone: queue.eve_phone,
 					mob_phone: queue.mob_phone,
-					datetime: datetime,
+					datetime: validDatetime,
 				}).save();
 
 				const leftQueue = await Queue.estimatedDocumentCount({});

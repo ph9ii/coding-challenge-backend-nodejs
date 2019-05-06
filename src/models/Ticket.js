@@ -25,7 +25,6 @@ const Ticket = bookshelf.Model.extend({
 
 module.exports.Ticket = bookshelf.model('Ticket', Ticket);
 
-
 /**
 * Validate ticket fields
 *
