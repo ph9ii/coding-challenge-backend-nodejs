@@ -44,7 +44,7 @@
     "redis": "^2.8.0",
     "sqlite3": "^4.0.6",
     "typescript": "^3.4.5",
-    "winston": "^2.4.0",
+    "winston": "^3.3.0",
     "winston-mongodb": "^3.0.0"
   },
   "devDependencies": {
